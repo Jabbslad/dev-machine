@@ -1,0 +1,28 @@
+- hosts: localhost
+  become: true
+  tasks:
+  - name: Install NeoVim
+    package: name=neovim
+  - name: Install Tmux
+    package: name=tmux
+  - name: Install Zsh
+    package: name=zsh
+  - name: Install which
+    package: name=which
+  - name: Change shell
+    shell: chsh -s `which zsh`
+  - name: Install curl
+    package: name=curl
+  - name: Install Git
+    package: name=git
+  - name: Install OhMyZsh
+    shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  - name: Install node
+    package: 
+      name: [nodejs, npm]
+  - name: Install n
+    npm:
+      name: n
+      global: true
+  - name: n 16
+    shell: n 16
